@@ -35,18 +35,8 @@ public class UserSteps2 extends AbstractIntegrationTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-//    @Before
-//    void setUp() {
-//        expectedUsers = new ArrayList<>();
-//        actualUsers = new ArrayList<>();
-//        repository.deleteAll();
-//    }
-
-
     @Given("^the all users$")
     public void givenTheAllUsers(final List<UserDto> users) {
-//        System.out.println("*********************************** " + users);
-//        System.out.println("*********************************** " + expectedUsers);
 
         expectedUsers.addAll(users);
         repository.saveAll(converter.convert(users));
@@ -57,11 +47,10 @@ public class UserSteps2 extends AbstractIntegrationTest {
         final String url = "/v1.0/users";
         final String body = testRestTemplate.getForEntity(url, String.class).getBody();
 
-//        System.out.println("********************************************* " + body);
 
         final UserDto[] userDtos = objectMapper.readValue(body, UserDto[].class);
 
-        actualUsers.addAll(Arrays.asList(userDtos));
+//        actualUsers.addAll(Arrays.asList(userDtos));
 
     }
 

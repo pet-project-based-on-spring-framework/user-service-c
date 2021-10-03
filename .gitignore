@@ -39,6 +39,7 @@ out/
 
 ### Exclude Log Files ###
 /logs
+.log
 user-service-b/logs
 
 ### Not exclude Liquibase files ###
