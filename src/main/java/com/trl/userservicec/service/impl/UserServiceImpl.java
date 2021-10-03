@@ -12,21 +12,22 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final UserRepository repository;
     private final TypeConverter<UserEntity, UserDto> converter;
-    private final UserRepository repository = new UserRepository();
 
-    public UserServiceImpl(final TypeConverter<UserEntity, UserDto> converter) {
+    public UserServiceImpl(final TypeConverter<UserEntity, UserDto> converter, UserRepository repository) {
         this.converter = converter;
+        this.repository = repository;
     }
 
     @Override
-    public UserDto getById(Integer id) {
-        return converter.convert(repository.getUsers(id));
+    public UserDto getById(Long id) {
+        return converter.convert(repository.findById(id).get());
     }
 
     @Override
     public List<UserDto> getAll() {
-        return converter.convert(repository.getAllUsers());
+        return converter.convert(repository.findAll());
     }
 
 }

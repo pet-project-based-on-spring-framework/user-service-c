@@ -7,11 +7,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserToUserDtoConverter implements TypeConverter<UserEntity, UserDto> {
+public class UserEntityToUserDtoConverter implements TypeConverter<UserEntity, UserDto> {
 
     private final ModelMapper modelMapper;
 
-    public UserToUserDtoConverter(ModelMapper modelMapper) {
+    public UserEntityToUserDtoConverter(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
 

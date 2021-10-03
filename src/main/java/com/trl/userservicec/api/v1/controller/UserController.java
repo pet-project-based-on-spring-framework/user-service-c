@@ -1,9 +1,9 @@
 package com.trl.userservicec.api.v1.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trl.userservicec.config.ApiVersion;
 import com.trl.userservicec.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,22 +20,23 @@ public class UserController {
 
     public static final String BASE_URL = ApiVersion.VERSION_1_0 + "/users";
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
-
     private final UserService service;
 
-    public UserController(final UserService service) {
+    private final ObjectMapper objectMapper;
+
+    public UserController(final UserService service, ObjectMapper objectMapper) {
         this.service = service;
+        this.objectMapper = objectMapper;
     }
 
     @GetMapping(path = "/{userId:\\d+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getUserById(@PathVariable(name = "userId") Integer userId) {
-        return service.getById(userId).toString();
+    public String getUserById(@PathVariable(name = "userId") Long userId) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(service.getById(userId));
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAllUsers() {
-        return service.getAll().toString();
+    public String getAllUsers() throws JsonProcessingException {
+        return objectMapper.writeValueAsString(service.getAll());
     }
 
 }

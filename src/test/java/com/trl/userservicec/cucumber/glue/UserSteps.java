@@ -1,3 +1,4 @@
+/*
 package com.trl.userservicec.cucumber.glue;
 
 import com.trl.userservicec.dto.UserDto;
@@ -27,7 +28,6 @@ public class UserSteps {
 
     @Given("^the all users$")
     public void givenTheAllUsers(final List<UserDto> users) {
-        System.out.println("************************** " + users);
     }
 
     @When("^the webClient requests all the users$")
@@ -38,3 +38,4 @@ public class UserSteps {
     public void thenAllTheUsersAreReturned() {
     }
 }
+*/

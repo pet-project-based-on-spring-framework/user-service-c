@@ -1,5 +1,6 @@
 package com.trl.userservicec.cucumber;
 
+import com.trl.userservicec.AbstractIntegrationTest;
 import com.trl.userservicec.UserServiceCApplication;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -10,7 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @RunWith(Cucumber.class)
 @CucumberContextConfiguration
 @SpringBootTest(
-        classes = {UserServiceCApplication.class, CucumberIt.class},
+        classes = {
+                UserServiceCApplication.class,
+//                UserServiceCApplicationTests.class,
+                CucumberIt.class
+        },
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @CucumberOptions(
@@ -18,5 +23,5 @@ import org.springframework.boot.test.context.SpringBootTest;
         tags = "",
         features = "src/test/resources/features"
 )
-public class CucumberIt {
+public class CucumberIt extends AbstractIntegrationTest {
 }

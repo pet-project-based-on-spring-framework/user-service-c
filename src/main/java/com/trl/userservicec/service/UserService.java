@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
-    UserDto getById(Integer id);
+    UserDto getById(Long id);
 
     List<UserDto> getAll();
 }
