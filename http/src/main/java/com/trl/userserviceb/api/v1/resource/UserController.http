@@ -1,0 +1,19 @@
+########################################################################################################################
+############################################################################################################ Get a user.
+########################################################################################################################
+
+### The user id must be greater than or equal to 1.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/0
+Content-Type: application/json
+
+### The user id must be greater than or equal to 1.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/1
+Content-Type: application/json
+
+### The user id must be greater than or equal to 1.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/2
+Content-Type: application/json
+
+### Get Page with users.
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users
+Content-Type: application/json
